@@ -70,10 +70,20 @@ export class PokemonService {
     }
   }
 
-  update(id: number, updatePokemonDto: UpdatePokemonDto) {
-    console.log(updatePokemonDto);
+  async update(id: string, updatePokemonDto: UpdatePokemonDto) {
+    await this.findOne(id);
 
-    return `This action updates a #${id} pokemon`;
+    const updatedPokemon = await this.pokemonModel.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          ...updatePokemonDto,
+        },
+      },
+      { new: true },
+    );
+
+    return updatedPokemon;
   }
 
   remove(id: number) {
