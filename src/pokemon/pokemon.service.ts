@@ -81,10 +81,13 @@ export class PokemonService {
   }
 
   async remove(id: string) {
-    const response = await this.pokemonModel.findByIdAndDelete(id);
-    console.log(response);
+    const removedPokemon = await this.pokemonModel.findByIdAndDelete(id);
 
-    return response;
+    if (!removedPokemon) {
+      throw new NotFoundException(`Pokemon with id "${id}" not found`);
+    }
+
+    return;
   }
 
   private handleExceptions(error: any) {
