@@ -2,25 +2,41 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-## Set up database
+# Executing in development mode
+
+### 1. Clone the repository
+
+### 2. Install the dependencies
+
+```
+npm run install
+```
+
+### 3. You must have Nest CLI installed
+
+```
+npm install -g @nestjs/cli
+```
+
+### 4. Set up database
 
 ```
 docker compose up -d
 ```
 
-## Initialize the prject
+### 5. Initialize the prject
 
 ```
 npm run start:dev
 ```
 
-## Populate de database with example data
+### 6. Populate de database with seed data
 
 ```
 http://localhost:3000/api/v2/seed
 ```
 
-### Stack
+## Stack
 
 - MongoDB
 - NestJS

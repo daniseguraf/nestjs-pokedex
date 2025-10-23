@@ -33,8 +33,12 @@ export class SeedService {
       await this.pokemonModel.insertMany(pokemons);
 
       return 'Database populated successfully';
-    } catch (error) {
-      console.error('Error fetching data:', error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Error fetching data:', error.message);
+      } else {
+        console.error('Error fetching data:', error);
+      }
       throw new Error('Failed to populate the database');
     }
   }

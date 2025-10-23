@@ -10,12 +10,15 @@ import { Model } from 'mongoose';
 import { Pokemon } from './entities/pokemon.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { isMongoId, isString } from 'class-validator';
+import { PaginationDto } from 'src/common/dtos/pagination.dto';
 
 @Injectable()
 export class PokemonService {
   constructor(
     @InjectModel(Pokemon.name) private readonly pokemonModel: Model<Pokemon>,
-  ) {}
+  ) {
+    console.log(process.env);
+  }
 
   async create(createPokemonDto: CreatePokemonDto) {
     createPokemonDto.name = createPokemonDto.name.toLowerCase();
@@ -28,8 +31,16 @@ export class PokemonService {
     }
   }
 
-  findAll() {
-    return `This action returns all pokemon`;
+  findAll(paginationDto: PaginationDto) {
+    const { limit = Number(process.env.DEFAULT_LIMIT), offset = 0 } =
+      paginationDto;
+
+    return this.pokemonModel
+      .find()
+      .limit(limit)
+      .skip(Number(offset))
+      .sort({ position: 1 })
+      .select('-__v');
   }
 
   async findOne(term: string) {
