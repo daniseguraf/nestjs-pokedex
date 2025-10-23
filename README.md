@@ -24,13 +24,18 @@ npm install -g @nestjs/cli
 docker compose up -d
 ```
 
-### 5. Initialize the prject
+### 5. The `.env.template` file
+
+- Clone the `.env.template` file and change the name of that copy to `.env`
+- Fill de enviroment variables with the correct data
+
+### 6. Initialize the project
 
 ```
 npm run start:dev
 ```
 
-### 6. Populate de database with seed data
+### 7. Populate de database with seed data
 
 ```
 http://localhost:3000/api/v2/seed
