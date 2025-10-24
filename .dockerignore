@@ -1,0 +1,29 @@
+# docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Makefile
+Makefile
+
+# Editors
+.editorconfig
+.vscode
+
+# Git
+.git
+.github
+.gitignore
+
+# Project
+README
+README.md
+.env*
+.husky
+.nvmrc
+
+node_modules
+npm-debug.log
+coverage
+
+dist
